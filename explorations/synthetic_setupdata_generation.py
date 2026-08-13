@@ -8,13 +8,14 @@ dbutils.library.restartPython()
 # COMMAND ----------
 
 # MAGIC %pip install faker
-# MAGIC catalog = "catadb360dev"
+# MAGIC catalog = "dac_test_dev"
 # MAGIC schema = "schemaadb360dev"
 # MAGIC db = "schemaadb360dev"
 # MAGIC
 # MAGIC spark.sql(f'USE CATALOG `{catalog}`')
+# MAGIC spark.sql(f'CREATE SCHEMA IF NOT EXISTS `{schema}`')
 # MAGIC spark.sql(f'USE SCHEMA `{schema}`')
-# MAGIC spark.sql(f'CREATE VOLUME IF NOT EXISTS `{catalog}`.`{schema}`.`raw_data`')
+# MAGIC spark.sql(f'CREATE VOLUME IF NOT EXISTS `{catalog}`.`{schema}`.`data_streaming_files`')
 # MAGIC volume_folder =  f"/Volumes/{catalog}/{schema}/data_streaming_files"
 # MAGIC
 # MAGIC try:
@@ -49,7 +50,7 @@ dbutils.library.restartPython()
 # COMMAND ----------
 
 # MAGIC %pip install faker
-# MAGIC catalog = "catadb360dev"
+# MAGIC catalog = "dac_test_dev"
 # MAGIC schema = "schemaadb360dev"
 # MAGIC db = "schemaadb360dev"
 # MAGIC
@@ -86,7 +87,7 @@ dbutils.library.restartPython()
 # COMMAND ----------
 
 # MAGIC %pip install faker
-# MAGIC catalog = "catadb360dev"
+# MAGIC catalog = "dac_test_dev"
 # MAGIC schema = "schemaadb360dev"
 # MAGIC db = "schemaadb360dev"
 # MAGIC
@@ -129,7 +130,7 @@ dbutils.library.restartPython()
 # COMMAND ----------
 
 # MAGIC %pip install faker 
-# MAGIC catalog = "catadb360dev"
+# MAGIC catalog = "dac_test_dev"
 # MAGIC schema = "hrdata"
 # MAGIC db = "hrdata"
 # MAGIC

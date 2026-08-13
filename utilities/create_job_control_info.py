@@ -1,8 +1,12 @@
 # Databricks notebook source
+# /// script
+# [tool.databricks.environment]
+# environment_version = "5"
+# ///
 # Utility script to create and populate the job_control_info control table
-# Catalog: catadb360dev | Schema: utilities | Table: job_control_info
+# Catalog: dac_test_dev | Schema: utilities | Table: job_control_info
 
-catalog = "catadb360dev"
+catalog = "dac_test_dev"
 schema = "utilities"
 
 # Create schema if it does not exist
@@ -29,13 +33,13 @@ spark.sql("""
 spark.sql("""
     MERGE INTO job_control_info AS target
     USING (
-        SELECT 'employees' AS table_name, 'catadb360dev' AS catalog, 'hrdata' AS schema, 1 AS group_code, 1 AS seq_num,
+        SELECT 'employees' AS table_name, 'dac_test_dev' AS catalog, 'hrdata' AS schema, 1 AS group_code, 1 AS seq_num,
                '{"primary_key": "employee_id", "secondary_keys": ["department_id", "workplace_id"]}' AS metadata
         UNION ALL
-        SELECT 'departments', 'catadb360dev', 'hrdata', 1, 2,
+        SELECT 'departments', 'dac_test_dev', 'hrdata', 1, 2,
                '{"primary_key": "department_id", "secondary_keys": []}'
         UNION ALL
-        SELECT 'workplaces', 'catadb360dev', 'hrdata', 1, 3,
+        SELECT 'workplaces', 'dac_test_dev', 'hrdata', 1, 3,
                '{"primary_key": "workplace_id", "secondary_keys": []}'
     ) AS source
     ON target.table_name = source.table_name AND target.schema = source.schema
@@ -46,11 +50,11 @@ spark.sql("""
 spark.sql("""
     MERGE INTO job_control_info AS target
     USING (
-        SELECT 'customers' AS table_name, 'catadb360dev' AS catalog, 'schemaadb360dev' AS schema, 2 AS group_code, 1 AS seq_num
+        SELECT 'customers' AS table_name, 'dac_test_dev' AS catalog, 'schemaadb360dev' AS schema, 2 AS group_code, 1 AS seq_num, NULL AS metadata
         UNION ALL
-        SELECT 'orders','catadb360dev', 'schemaadb360dev', 2, 2
+        SELECT 'orders','dac_test_dev', 'schemaadb360dev', 2, 2, NULL
         UNION ALL
-        SELECT 'products','catadb360dev', 'schemaadb360dev', 2, 3
+        SELECT 'products','dac_test_dev', 'schemaadb360dev', 2, 3, NULL
     ) AS source
     ON target.table_name = source.table_name AND target.schema = source.schema
     WHEN NOT MATCHED THEN INSERT *

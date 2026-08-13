@@ -19,7 +19,7 @@ from pyspark.sql import functions as F
 
 # --- Constants ---
 VOLUME_NAME = "data_streaming_files"
-CONTROL_TABLE = "catadb360dev.utilities.job_control_info"
+CONTROL_TABLE = "dac_test_dev.utilities.job_control_info"
 
 
 # --- Read pipeline parameters ---
@@ -102,3 +102,5 @@ for tbl_name, tbl_catalog, tbl_schema in tables_to_ingest:
             .option("cloudFiles.inferColumnTypes", "true")
             .load(path)
         )
+
+print("bronze tables ingested successfully.")
