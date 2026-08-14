@@ -1,0 +1,16 @@
+# resources/bronze_pipeline.yml
+resources:
+  pipelines:
+    bronze_ingestion:
+      name: "Bronze Ingestion"
+      catalog: "dac_test_dev"
+      schema: "schemaadb360dev"
+      serverless: true
+      photon: true
+      channel: CURRENT
+      continuous: false
+      configuration:
+        group_code: "1"
+      libraries:
+        - file:
+            path: ../transformations/ingest_into_bronze_generic.py
