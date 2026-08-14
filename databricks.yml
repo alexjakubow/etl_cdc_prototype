@@ -1,0 +1,17 @@
+# databricks.yml — project root
+bundle:
+  name: etl_cdc_prototype
+
+workspace:
+  root_path: /Workspace/Users/alex.jakubow@dac.nc.gov/etl_cdc_prototype
+
+include:
+  - resources/*.yml
+
+targets:
+  dev:
+    default: true
+    mode: development
+
+  prod:
+    mode: production
