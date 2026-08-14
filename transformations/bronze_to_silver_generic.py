@@ -18,7 +18,7 @@ from pyspark.sql import functions as F
 # =============================================================================
 
 # --- Constants ---
-CONTROL_TABLE = "catadb360dev.utilities.job_control_info"
+CONTROL_TABLE = "dac_test_dev.utilities.job_control_info"
 
 import json
 
